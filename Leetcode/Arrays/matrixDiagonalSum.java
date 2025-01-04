@@ -1,0 +1,22 @@
+package DevOps_dir.Leetcode.Arrays;
+
+public class matrixDiagonalSum { 
+    public static void main(String[] args) {
+        //int[][] mat = {{1,1,1,1},{1,1,1,1},{1,1,1,1}};
+        int[][] mat = {{5}};
+        System.out.println(diagonalSum(mat));
+
+    }
+
+    public static int diagonalSum(int[][] mat) {
+        int sum=0;
+        for(int i=0;i<mat.length;i++){
+            for(int j=0;j<mat[i].length;j++){
+                if((i==j) || (i+j == (mat.length-1))){
+                    sum += mat[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+}

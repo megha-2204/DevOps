@@ -1,0 +1,59 @@
+*QUESTIONS*
+
+1. l2 = new ArrayList<>(Arrays.asList(a)); is not as same as l2 = (Arrays.asList(a)); Explain?
+
+Arrays.asList(a) - This is a method in Java that converts an array into a fixed-size list.
+
+*EXPLAINATION*
+
+//l2 = new ArrayList<>(Arrays.asList(a)):
+
+Arrays.asList(a) creates a fixed-size list backed by the array a.
+new ArrayList<>(...) creates a new, resizable ArrayList that is a copy of the list returned by Arrays.asList(a).
+Result: l2 is a resizable ArrayList, and you can add, remove, or modify its elements freely.
+
+String[] a = {"apple", "banana"};
+List<String> l2 = new ArrayList<>(Arrays.asList(a));
+l2.add("cherry");  // Works fine
+System.out.println(l2);  // [apple, banana, cherry]
+
+
+//l2 = Arrays.asList(a):
+
+Arrays.asList(a) returns a fixed-size list backed by the original array a.
+You cannot change the size of this list (e.g., add or remove elements), though you can modify its existing elements.
+Result: l2 is not a resizable list and is tied to the original array.
+
+String[] a = {"apple", "banana"};
+List<String> l2 = Arrays.asList(a);
+l2.add("cherry");  // Throws UnsupportedOperationException
+l2.set(0, "orange");  // Works fine
+System.out.println(Arrays.toString(a));  // [orange, banana]
+
+
+2. List<Integer> l2 = l1; is not as same as List<Integer> l3=new ArrayList<>(l1);  Explain?
+
+//List<Integer> l2 = l1;
+
+Shallow copy / reference assignment: This does not create a new list. Instead, it makes l2 reference the same list as l1.
+Changes made to l1 will also reflect in l2 and vice versa because both references point to the same underlying list object.
+
+List<Integer> l1 = new ArrayList<>(Arrays.asList(1, 2, 3));
+List<Integer> l2 = l1;  // l2 points to the same list as l1
+l2.add(4);
+System.out.println(l1); // Output: [1, 2, 3, 4]
+System.out.println(l2); // Output: [1, 2, 3, 4]
+
+//List<Integer> l3 = new ArrayList<>(l1);
+
+Deep copy of the list structure: This creates a new ArrayList and copies all the elements from l1 into it.
+l3 is a completely new list independent of l1. Changes to l3 will not affect l1 and vice versa.
+
+List<Integer> l1 = new ArrayList<>(Arrays.asList(1, 2, 3));
+List<Integer> l3 = new ArrayList<>(l1);  // New independent list with the same elements as l1
+l3.add(4);
+System.out.println(l1); // Output: [1, 2, 3]
+System.out.println(l3); // Output: [1, 2, 3, 4]
+
+
+
