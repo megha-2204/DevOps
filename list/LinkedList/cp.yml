@@ -1,0 +1,52 @@
+#cp conditions
+cp_criteria:
+  #conditions as sub criteria
+  conditions:
+    #selected item listed here
+    location:
+      - 'India'
+      - 'Alaska' 
+    ip_criteria:
+      - 'static ip'
+      - 'current ip'
+      - 'range'
+    platform:
+      - 'mac'
+      - 'linux'
+      - 'iphone'
+      - 'ipad'
+      - 'android'
+      - 'windows'
+    time:
+      - 'am to am'
+      - 'pm to pm'
+      - 'am to pm'
+      - 'pm to am'
+    day:
+      - 'Monday'
+      - 'Tuesday'
+      - 'Wednesday'
+      - 'Thursday'
+      - 'Friday'
+      - 'Saturday'
+      - 'Sunday'
+    device:
+      - 'Managed device'
+      - 'Unmanaged device'
+    
+  comparators:
+    criteria:
+      - 'in'
+      - 'not in'
+    condition_match:
+      - 'any'
+      - 'all'
+    actions:
+      allow with mfa:
+        - 'oneauth'
+        - 'sms based otp'
+        - 'google auth'
+        - 'email based otp'
+        - 'security key'
+      deny:
+      allow:              
